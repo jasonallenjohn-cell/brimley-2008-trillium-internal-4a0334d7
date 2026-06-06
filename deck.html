@@ -1,0 +1,1138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2008 Brimley Road — Trillium Internal Deal Memo</title>
+<style>
+  :root {
+    --trillium-green: #1B4D3E;
+    --dark-green: #0F3028;
+    --light-green: #2D6A4F;
+    --cream: #F5F5F0;
+    --light-gray: #E8E8E8;
+    --gold: #D4A574;
+    --muted-red: #C44536;
+    --grey-text: #666666;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Arial, sans-serif;
+    color: var(--dark-green);
+    background: #999;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  /* Slide page — US Letter landscape */
+  .slide {
+    width: 11in;
+    height: 8.5in;
+    background: var(--cream);
+    margin: 16px auto;
+    padding: 0.5in 0.65in;
+    position: relative;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .slide:last-child { page-break-after: avoid; }
+
+  /* Branded header bar */
+  .brand-bar {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--trillium-green);
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    gap: 14px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo-mark {
+    width: 26px; height: 26px;
+    border: 2.5px solid var(--trillium-green);
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--trillium-green);
+  }
+  .logo-mark::before {
+    content: "";
+    position: absolute;
+    top: 5px; left: 5px;
+    width: 12px; height: 12px;
+    border: 2px solid var(--cream);
+    border-top: none; border-right: none;
+  }
+  .logo-mark::after {
+    content: "";
+    position: absolute;
+    top: 5px; right: 5px;
+    width: 8px; height: 16px;
+    background: var(--cream);
+  }
+  .logo-text {
+    line-height: 1;
+  }
+  .logo-text .name {
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--trillium-green);
+    letter-spacing: -0.5px;
+  }
+  .logo-text .tag {
+    font-size: 7.5pt;
+    color: var(--grey-text);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+  .brand-bar .doc-meta {
+    margin-left: auto;
+    text-align: right;
+    font-size: 9pt;
+    color: var(--grey-text);
+    line-height: 1.4;
+  }
+  .brand-bar .doc-meta strong { color: var(--trillium-green); }
+
+  /* Footer bar */
+  .slide-footer {
+    position: absolute;
+    bottom: 0.35in;
+    left: 0.65in;
+    right: 0.65in;
+    border-top: 1px solid var(--light-gray);
+    padding-top: 6px;
+    font-size: 8.5pt;
+    color: var(--grey-text);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Slide content */
+  .slide-content { padding-bottom: 0.45in; }
+
+  /* TYPOGRAPHY */
+  h1.slide-title {
+    font-size: 22pt;
+    color: var(--trillium-green);
+    margin: 0 0 4px;
+    font-weight: 700;
+  }
+  h2.slide-title {
+    font-size: 17pt;
+    color: var(--trillium-green);
+    margin: 0 0 4px;
+    font-weight: 700;
+  }
+  .slide-subtitle {
+    font-size: 11pt;
+    color: var(--grey-text);
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  h3 {
+    font-size: 12pt;
+    color: var(--trillium-green);
+    margin: 12px 0 6px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 3px;
+  }
+  p { margin: 0 0 8px; }
+  ul { margin: 6px 0 10px; padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  strong { color: var(--dark-green); }
+  em { color: var(--grey-text); }
+
+  /* Cards & Grids */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+
+  .kpi {
+    background: white;
+    border: 1px solid var(--light-gray);
+    border-left: 4px solid var(--trillium-green);
+    padding: 9px 12px;
+    border-radius: 3px;
+  }
+  .kpi.gold { border-left-color: var(--gold); }
+  .kpi.warn { border-left-color: var(--muted-red); }
+  .kpi.light { border-left-color: var(--light-green); }
+  .kpi .l {
+    font-size: 8.5pt;
+    color: var(--grey-text);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    font-weight: 600;
+  }
+  .kpi .v {
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--trillium-green);
+    margin-top: 2px;
+    line-height: 1.1;
+  }
+  .kpi .n {
+    font-size: 9pt;
+    color: var(--grey-text);
+    margin-top: 2px;
+  }
+
+  table.t {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5pt;
+    background: white;
+  }
+  table.t th {
+    background: var(--trillium-green);
+    color: white;
+    padding: 7px 10px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 10pt;
+    letter-spacing: 0.3px;
+  }
+  table.t td {
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--light-gray);
+    vertical-align: top;
+  }
+  table.t tr:nth-child(even) td { background: var(--cream); }
+  table.t td.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+  table.t tr.total td {
+    background: var(--trillium-green) !important;
+    color: white;
+    font-weight: 700;
+    border-bottom: none;
+  }
+  table.t tr.subtotal td {
+    background: var(--light-gray) !important;
+    font-weight: 700;
+    color: var(--dark-green);
+    border-bottom: none;
+  }
+
+  /* Risk grid */
+  .risk-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--light-gray);
+    background: white;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .risk-row .risk-side {
+    padding: 9px 12px;
+    border-right: 1px solid var(--light-gray);
+  }
+  .risk-row .risk-label {
+    font-size: 8pt;
+    color: var(--muted-red);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .risk-row .miti-side {
+    padding: 9px 12px;
+    background: var(--cream);
+  }
+  .risk-row .miti-label {
+    font-size: 8pt;
+    color: var(--light-green);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .risk-row .risk-text, .risk-row .miti-text { font-size: 10pt; line-height: 1.35; }
+
+  /* Timeline */
+  .timeline {
+    background: white;
+    border-radius: 4px;
+    border: 1px solid var(--light-gray);
+    padding: 12px 16px;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 14px;
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--light-gray);
+    align-items: start;
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-date {
+    color: var(--trillium-green);
+    font-weight: 700;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .timeline-event { font-size: 10.5pt; }
+  .timeline-event .what { font-weight: 600; color: var(--dark-green); }
+  .timeline-event .detail { color: var(--grey-text); font-size: 9.5pt; margin-top: 2px; }
+
+  /* Cover-specific */
+  .cover {
+    height: 8.5in;
+    background: var(--trillium-green);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.65in;
+  }
+  .cover .top-brand { display: flex; align-items: center; gap: 10px; }
+  .cover .top-brand .logo-mark { background: white; border-color: white; }
+  .cover .top-brand .logo-mark::before { border-color: var(--trillium-green); }
+  .cover .top-brand .logo-mark::after { background: var(--trillium-green); }
+  .cover .top-brand .name { color: white; font-size: 18pt; }
+  .cover .top-brand .tag { color: rgba(255,255,255,0.7); }
+  .cover .deck-title { margin-top: auto; }
+  .cover .deck-title .label {
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    opacity: 0.7;
+    margin-bottom: 10px;
+  }
+  .cover .deck-title h1 {
+    font-size: 38pt;
+    margin: 0 0 4px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.05;
+  }
+  .cover .deck-title .sub {
+    font-size: 15pt;
+    opacity: 0.85;
+    margin-top: 8px;
+  }
+  .cover .cover-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 10pt;
+    opacity: 0.8;
+  }
+  .cover .cover-footer .conf {
+    background: rgba(255,255,255,0.12);
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-size: 9pt;
+    letter-spacing: 1px;
+  }
+
+  /* Section labels (top right) */
+  .section-marker {
+    position: absolute;
+    top: 0.45in;
+    right: 0.65in;
+    background: var(--trillium-green);
+    color: white;
+    font-size: 8pt;
+    padding: 3px 10px;
+    border-radius: 2px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* Highlight callout */
+  .callout {
+    background: white;
+    border: 1px solid var(--gold);
+    border-left: 4px solid var(--gold);
+    padding: 9px 12px;
+    border-radius: 3px;
+    font-size: 10pt;
+    margin: 10px 0;
+  }
+  .callout strong { color: var(--trillium-green); }
+  .callout.warn { border-color: var(--muted-red); border-left-color: var(--muted-red); }
+
+  /* Property image placeholder */
+  .property-image {
+    background: var(--light-gray);
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    padding: 12px;
+    color: var(--grey-text);
+    text-align: center;
+    font-size: 9.5pt;
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .property-image .ph-title {
+    font-weight: 700;
+    color: var(--trillium-green);
+    font-size: 11pt;
+    margin-bottom: 4px;
+    font-style: normal;
+  }
+
+  @media screen {
+    body { padding: 16px 0; }
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .slide { box-shadow: none; margin: 0 auto; }
+    @page { size: 11in 8.5in; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============= SLIDE 1 — COVER ============= -->
+<div class="slide cover">
+  <div class="top-brand">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text">
+        <div class="name">TRILLIUM</div>
+        <div class="tag">UNITED ESTATE</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="deck-title">
+    <div class="label">INTERNAL DEAL MEMO</div>
+    <h1>2008 BRIMLEY ROAD</h1>
+    <div class="sub">Scarborough, ON · 6-Storey + Garden Suite · 29-Unit Purpose-Built Rental</div>
+  </div>
+
+  <div class="cover-footer">
+    <div>
+      <div style="opacity: 0.7; font-size: 9pt;">PREPARED BY</div>
+      <div style="font-size: 12pt; margin-top: 3px;">Jason Allen John · Trillium United Estate</div>
+      <div style="font-size: 10pt; opacity: 0.7; margin-top: 2px;">June 2026 · Status: Pre-Acquisition</div>
+    </div>
+    <div class="conf">CONFIDENTIAL — INTERNAL USE ONLY</div>
+  </div>
+</div>
+
+<!-- ============= SLIDE 2 — DEAL SUMMARY ============= -->
+<div class="slide">
+  <div class="brand-bar">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text"><div class="name">TRILLIUM</div><div class="tag">UNITED ESTATE</div></div>
+    </div>
+    <div class="doc-meta">
+      <div><strong>2008 Brimley Road</strong> · Internal Deal Memo</div>
+      <div>June 2026 · Page 2 of 10</div>
+    </div>
+  </div>
+  <div class="section-marker">DEAL SUMMARY</div>
+
+  <div class="slide-content">
+    <h1 class="slide-title">Deal Summary</h1>
+    <div class="slide-subtitle">28-unit (revised: 29) purpose-built rental on a 1,090 m² Scarborough RD lot</div>
+
+    <p style="font-size: 11.5pt; line-height: 1.55;">
+      2008 Brimley Road is an unentitled single-family parcel at 23.21m × 46.94m in Scarborough's
+      Brimley corridor. The project develops a <strong>6-storey, 27-unit main building plus a 2-unit
+      single-storey garden suite (29 units total)</strong> at 28,261 sf GFA, designed by Office Ou Ltd.
+      and submitted for PAC in May 2026. The structure uses a vendor take-back ($1M VTB + $1M cash =
+      $2M land basis) with a 12-month seller occupancy, exits via CMHC MLI Select permanent at
+      substantial completion, and transitions to a long-term Trillium hold.
+    </p>
+
+    <h3>Key Deal Metrics</h3>
+    <div class="grid-4">
+      <div class="kpi"><div class="l">Total Project Cost</div><div class="v">~$13.2M</div><div class="n">$300/sf hard cost basis</div></div>
+      <div class="kpi"><div class="l">Construction Loan</div><div class="v">~$9.2M</div><div class="n">70% LTC · 7.5% IO · 18 mo</div></div>
+      <div class="kpi"><div class="l">Stabilized NOI</div><div class="v">~$601K</div><div class="n">Yr 1 market rents</div></div>
+      <div class="kpi gold"><div class="l">CMHC Refi</div><div class="v">~$10.1M</div><div class="n">DSCR 1.20× / 50 yr amort</div></div>
+    </div>
+
+    <h3>What Trillium Is Doing</h3>
+    <ul>
+      <li><strong>Acquiring</strong> the unentitled land at $2M ($1M cash + $1M VTB) with 12-month seller occupancy</li>
+      <li><strong>Entitling</strong> through PAC + permit; demolition of existing 1-storey brick dwelling at construction start</li>
+      <li><strong>Constructing</strong> 28,261 sf 6-storey rental + 2-unit garden suite over 18 months</li>
+      <li><strong>Refinancing</strong> at substantial completion via CMHC MLI Select; targeting BCH 40% forgivable for optimal capital efficiency</li>
+      <li><strong>Holding</strong> long-term via Trillium Property Ownership (TPO) with phase-2 LP/GP syndication structure</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Strategic context:</strong> The proforma at standard CMHC + market rents shows the project working as a long-term Trillium hold (~4.5× equity multiple over 20 yrs, ~7.5% CAGR) but with meaningful equity exposure (~$4.4M). The parallel BCH Ubuntu structure (separate Investor Package) materially improves capital efficiency by replacing Trillium equity with a BCH-stacked / forgivable-loan structure.
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Confidential — For Internal Use Only</span>
+    <span>Trillium United Estate · June 2026</span>
+  </div>
+</div>
+
+<!-- ============= SLIDE 3 — THE PROPERTY ============= -->
+<div class="slide">
+  <div class="brand-bar">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text"><div class="name">TRILLIUM</div><div class="tag">UNITED ESTATE</div></div>
+    </div>
+    <div class="doc-meta">
+      <div><strong>2008 Brimley Road</strong> · Internal Deal Memo</div>
+      <div>June 2026 · Page 3 of 10</div>
+    </div>
+  </div>
+  <div class="section-marker">THE PROPERTY</div>
+
+  <div class="slide-content">
+    <h1 class="slide-title">The Property &amp; Design</h1>
+    <div class="slide-subtitle">Per Office Ou Ltd. PAC drawings (sheet ID 2026-06, May 2026)</div>
+
+    <div class="grid-2">
+      <div>
+        <h3>Site &amp; Building</h3>
+        <table class="t">
+          <tr><td><strong>Address</strong></td><td>2008 Brimley Rd, Scarborough M1S 2B2</td></tr>
+          <tr><td><strong>Zoning</strong></td><td>RD (Residential Detached)</td></tr>
+          <tr><td><strong>Lot Dimensions</strong></td><td>23.21 m × 46.94 m</td></tr>
+          <tr><td><strong>Lot Area</strong></td><td>~1,090 m²</td></tr>
+          <tr><td><strong>Main Building</strong></td><td>6-storey, 27 units, 27,452 sf</td></tr>
+          <tr><td><strong>Garden Suite</strong></td><td>1-storey, 2 units, 810 sf</td></tr>
+          <tr><td><strong>Total GFA</strong></td><td>28,261 sf (2,625.5 m²)</td></tr>
+          <tr><td><strong>Total Units</strong></td><td>29</td></tr>
+          <tr><td><strong>Architect</strong></td><td>Office Ou Ltd.</td></tr>
+          <tr><td><strong>Status</strong></td><td>PAC submitted May 2026</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <h3>Unit Mix</h3>
+        <table class="t">
+          <thead>
+            <tr><th>Unit Type</th><th class="num">Count</th><th class="num">Sf</th><th class="num">Rent/Mo</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Studio</td><td class="num">2</td><td class="num">404</td><td class="num">$1,650</td></tr>
+            <tr><td>1 BR</td><td class="num">7</td><td class="num">701</td><td class="num">$1,950</td></tr>
+            <tr><td>1 BR + Den</td><td class="num">8</td><td class="num">720</td><td class="num">$2,200</td></tr>
+            <tr><td>2 BR</td><td class="num">6</td><td class="num">726</td><td class="num">$2,500</td></tr>
+            <tr><td>3 BR + Den</td><td class="num">6</td><td class="num">1,075</td><td class="num">$3,200</td></tr>
+            <tr class="subtotal"><td>TOTAL</td><td class="num">29</td><td class="num">28,261</td><td class="num">$68,750</td></tr>
+            <tr class="total"><td>ANNUAL GROSS</td><td class="num" colspan="3">$825,000</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout" style="margin-top: 14px;">
+          <strong>Design notes:</strong> No 4BR+D units in the actual design (prior model assumed 4×4BR+D — revised to 6×3BR+D per drawings). Garden suite adds 2 studios at the rear. Existing 1-storey brick dwelling at No. 2008 requires demolition pre-construction.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Confidential — For Internal Use Only</span>
+    <span>Trillium United Estate · June 2026</span>
+  </div>
+</div>
+
+<!-- ============= SLIDE 4 — PROJECT COSTS ============= -->
+<div class="slide">
+  <div class="brand-bar">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text"><div class="name">TRILLIUM</div><div class="tag">UNITED ESTATE</div></div>
+    </div>
+    <div class="doc-meta">
+      <div><strong>2008 Brimley Road</strong> · Internal Deal Memo</div>
+      <div>June 2026 · Page 4 of 10</div>
+    </div>
+  </div>
+  <div class="section-marker">PROJECT COSTS</div>
+
+  <div class="slide-content">
+    <h1 class="slide-title">Project Costs — TPC Build-Up</h1>
+    <div class="slide-subtitle">28,261 sf at $300/sf hard + Trillium standard soft / contingency / financing</div>
+
+    <div class="grid-2">
+      <div>
+        <table class="t">
+          <thead><tr><th>Category</th><th class="num">Amount</th><th class="num">$/Unit</th></tr></thead>
+          <tbody>
+            <tr><td>Land purchase ($1M cash + $1M VTB)</td><td class="num">$2,000,000</td><td class="num">$68,966</td></tr>
+            <tr><td>LTT (ON + Toronto MLTT)</td><td class="num">$72,950</td><td class="num">$2,516</td></tr>
+            <tr><td>Closing / DD / legal</td><td class="num">$49,000</td><td class="num">$1,690</td></tr>
+            <tr><td>Demo existing dwelling</td><td class="num">$40,000</td><td class="num">$1,379</td></tr>
+            <tr class="subtotal"><td>Land &amp; Closing</td><td class="num">$2,161,950</td><td class="num">$74,550</td></tr>
+            <tr><td>Hard cost (28,261 sf × $300/sf)</td><td class="num">$8,478,300</td><td class="num">$292,355</td></tr>
+            <tr><td>Soft cost (12% of hard)</td><td class="num">$1,017,396</td><td class="num">$35,083</td></tr>
+            <tr><td>Contingency (5% of hard)</td><td class="num">$423,915</td><td class="num">$14,618</td></tr>
+            <tr><td>Interest reserve (8% of loan)</td><td class="num">$739,000</td><td class="num">$25,483</td></tr>
+            <tr><td>VTB carry (24 mo × 7.5%)</td><td class="num">$150,000</td><td class="num">$5,172</td></tr>
+            <tr><td>Construction buffer</td><td class="num">$500,000</td><td class="num">$17,241</td></tr>
+            <tr class="total"><td>TOTAL PROJECT COST</td><td class="num">$13,470,561</td><td class="num">$464,502</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h3>Cost per Sf / Unit Benchmarks</h3>
+        <div class="grid-2" style="gap: 8px;">
+          <div class="kpi"><div class="l">Hard Cost</div><div class="v">$300</div><div class="n">per sf GFA</div></div>
+          <div class="kpi"><div class="l">All-in TPC</div><div class="v">$477</div><div class="n">per sf GFA</div></div>
+          <div class="kpi"><div class="l">Per Unit</div><div class="v">$464K</div><div class="n">across 29 units</div></div>
+          <div class="kpi light"><div class="l">Land Basis</div><div class="v">$68.6K</div><div class="n">per unit</div></div>
+        </div>
+
+        <h3>Cost Engineering Opportunities</h3>
+        <ul style="font-size: 10pt;">
+          <li><strong>$275/sf target:</strong> reduces TPC by ~$706K; brings per-unit to ~$440K</li>
+          <li><strong>Demo value engineering:</strong> negotiate with seller for tax-deductible structure</li>
+          <li><strong>Soft cost reduction:</strong> Office Ou + standard local subs vs. boutique trades; reduce from 12% to 10%</li>
+          <li><strong>Contingency tightening:</strong> 5% standard; revisit at substantial design completion</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Reference cost basis:</strong> $300/sf is conservative for Scarborough purpose-built rental (market 2026 typically $260-$320/sf). Affords ~10% margin in negotiation with general contractor.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Confidential — For Internal Use Only</span>
+    <span>Trillium United Estate · June 2026</span>
+  </div>
+</div>
+
+<!-- ============= SLIDE 5 — SOURCES OF FUNDS ============= -->
+<div class="slide">
+  <div class="brand-bar">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text"><div class="name">TRILLIUM</div><div class="tag">UNITED ESTATE</div></div>
+    </div>
+    <div class="doc-meta">
+      <div><strong>2008 Brimley Road</strong> · Internal Deal Memo</div>
+      <div>June 2026 · Page 5 of 10</div>
+    </div>
+  </div>
+  <div class="section-marker">SOURCES OF FUNDS</div>
+
+  <div class="slide-content">
+    <h1 class="slide-title">Sources of Funds — Capital Stack</h1>
+    <div class="slide-subtitle">Phase 1 (TPI) financing: construction loan + VTB + LP/GP equity</div>
+
+    <div class="grid-2">
+      <div>
+        <h3>Phase 1 Capital Stack</h3>
+        <table class="t">
+          <thead><tr><th>Source</th><th class="num">Amount</th><th class="num">% of TPC</th></tr></thead>
+          <tbody>
+            <tr><td>Construction Loan (Senior debt)</td><td class="num">$9,235,000</td><td class="num">68.6%</td></tr>
+            <tr><td>VTB (Vendor — Gary Loughlin)</td><td class="num">$1,000,000</td><td class="num">7.4%</td></tr>
+            <tr><td>LP Equity (Phase 1 TPI)</td><td class="num">$2,235,561</td><td class="num">16.6%</td></tr>
+            <tr><td>GP Equity (Trillium)</td><td class="num">$1,000,000</td><td class="num">7.4%</td></tr>
+            <tr class="total"><td>TOTAL SOURCES</td><td class="num">$13,470,561</td><td class="num">100%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Construction Loan Terms</h3>
+        <table class="t">
+          <tr><td>LTC (loan-to-cost)</td><td class="num">68.6%</td></tr>
+          <tr><td>Interest rate</td><td class="num">7.5% IO</td></tr>
+          <tr><td>Term</td><td class="num">18 months</td></tr>
+          <tr><td>Origination fee</td><td class="num">2.0% / $185K</td></tr>
+          <tr><td>Draw schedule</td><td class="num">5 × 20% + 10% holdback</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <h3>VTB Structure (Seller)</h3>
+        <table class="t">
+          <tr><td>Principal</td><td class="num">$1,000,000</td></tr>
+          <tr><td>Rate</td><td class="num">7.5% accruing</td></tr>
+          <tr><td>Term</td><td class="num">24 months</td></tr>
+          <tr><td>Priority</td><td class="num">2nd charge on land</td></tr>
+          <tr><td>Garage waiver</td><td class="num">$500K (Option A only)</td></tr>
+          <tr><td>Payoff trigger</td><td class="num">CMHC refi</td></tr>
+        </table>
+
+        <h3>GP Fees (Trillium)</h3>
+        <table class="t">
+          <thead><tr><th>Fee</th><th class="num">Rate</th><th class="num">Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Acquisition</td><td class="num">2.0%</td><td class="num">$40,000</td></tr>
+            <tr><td>Development</td><td class="num">5.0%</td><td class="num">$423,915</td></tr>
+            <tr><td>Construction Mgmt</td><td class="num">3.0%</td><td class="num">$254,349</td></tr>
+            <tr class="subtotal"><td>Phase 1 GP Fees</td><td class="num" colspan="2">$718,264</td></tr>
+            <tr><td>Asset Mgmt (annual, post-stab)</td><td class="num">1.5%</td><td class="num">~$360K/yr</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout" style="margin-top: 10px;">
+          <strong>Phase 1 LP target:</strong> 20% annual return → 1.2× multiple in 12-18 months. Exit via CMHC refinance. Phase 1 LP capital fully returned at refi (if proceeds support it).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Confidential — For Internal Use Only</span>
+    <span>Trillium United Estate · June 2026</span>
+  </div>
+</div>
+
+<!-- ============= SLIDE 6 — PHASE 1 RETURNS (TPI) ============= -->
+<div class="slide">
+  <div class="brand-bar">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text"><div class="name">TRILLIUM</div><div class="tag">UNITED ESTATE</div></div>
+    </div>
+    <div class="doc-meta">
+      <div><strong>2008 Brimley Road</strong> · Internal Deal Memo</div>
+      <div>June 2026 · Page 6 of 10</div>
+    </div>
+  </div>
+  <div class="section-marker">PHASE 1 RETURNS</div>
+
+  <div class="slide-content">
+    <h1 class="slide-title">Phase 1 — TPI Construction &amp; CMHC Refi Exit</h1>
+    <div class="slide-subtitle">Trillium Property Investor (LP/GP) waterfall through CMHC refinance</div>
+
+    <div class="grid-2">
+      <div>
+        <h3>CMHC Refi Sizing (Standard MLI Select)</h3>
+        <table class="t">
+          <tr><td>Stabilized NOI</td><td class="num">$601,400</td></tr>
+          <tr><td>DSCR target (Standard)</td><td class="num">1.20×</td></tr>
+          <tr><td>Max annual debt service</td><td class="num">$501,167</td></tr>
+          <tr><td>Rate / amort (Standard)</td><td class="num">4.5% / 50 yr</td></tr>
+          <tr><td>Annual factor (4.5%/50yr)</td><td class="num">0.04958</td></tr>
+          <tr><td>DSCR-driven max loan</td><td class="num">$10,108,000</td></tr>
+          <tr><td>Stabilized value (4% cap)</td><td class="num">$15,035,000</td></tr>
+          <tr><td>LTV-driven max (85%)</td><td class="num">$12,780,000</td></tr>
+          <tr class="total"><td>CMHC Loan (DSCR-driven)</td><td class="num">$10,108,000</td></tr>
+        </table>
+
+        <h3>Refi Cash Flow</h3>
+        <table class="t">
+          <tr><td>CMHC permanent proceeds</td><td class="num">$10,108,000</td></tr>
+          <tr><td>Construction loan payoff (drawn + interest)</td><td class="num">−$9,974,000</td></tr>
+          <tr><td>VTB payoff to seller</td><td class="num">−$1,000,000</td></tr>
+          <tr class="total" style="background: #C44536 !important;"><td>Net Cash at Refi</td><td class="num">−$866,000</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <h3>Phase 1 Waterfall</h3>
+        <table class="t">
+          <thead><tr><th>Order</th><th>Recipient</th><th class="num">$ Amount</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Return LP capital (Phase 1)</td><td class="num">$2,235,561</td></tr>
+            <tr><td>2</td><td>LP Preferred Return (20%, ~12 mo)</td><td class="num">$447,112</td></tr>
+            <tr><td>3</td><td>Return GP capital</td><td class="num">$1,000,000</td></tr>
+            <tr><td>4</td><td>GP Promote (100% of excess)</td><td class="num">—</td></tr>
+            <tr class="subtotal"><td colspan="2">Total Required at Refi</td><td class="num">$3,682,673</td></tr>
+            <tr class="total"><td colspan="2">Net Proceeds Available</td><td class="num" style="background: #C44536 !important;">−$866K</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout warn">
+          <strong>⚠ Standard CMHC + market rents does not fully exit Phase 1 LP.</strong> Cash gap of ~$3.5M at refi (LP capital + pref + GP capital + 0 promote − negative refi proceeds). The deal requires LP commitment to a longer hold beyond Phase 1 OR a structural enhancement.
+        </div>
+
+        <h3>Three Paths to Close the Gap</h3>
+        <ul style="font-size: 9.5pt;">
+          <li><strong>BCH 40% Forgivable Loan</strong> — adds ~$5.6M of forgivable capital; transforms refi economics → Phase 1 LP fully exited with promote. <em>This is the Investor Package path.</em></li>
+          <li><strong>MLI Select Tier 3 (premium):</strong> 4.0% rate, 1.15× DSCR → loan to ~$11.8M, narrows gap to ~$1.2M; requires 30% affordable units + Tier 3 energy + accessibility</li>
+          <li><strong>Phase 2 capital raise at refi:</strong> raise new LP equity at Phase 2 start to take out Phase 1 LP; Phase 2 LP enters at lower valuation, captures appreciation upside</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Confidential — For Internal Use Only</span>
+    <span>Trillium United Estate · June 2026</span>
+  </div>
+</div>
+
+<!-- ============= SLIDE 7 — PHASE 2 RETURNS (TPO) ============= -->
+<div class="slide">
+  <div class="brand-bar">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text"><div class="name">TRILLIUM</div><div class="tag">UNITED ESTATE</div></div>
+    </div>
+    <div class="doc-meta">
+      <div><strong>2008 Brimley Road</strong> · Internal Deal Memo</div>
+      <div>June 2026 · Page 7 of 10</div>
+    </div>
+  </div>
+  <div class="section-marker">PHASE 2 RETURNS</div>
+
+  <div class="slide-content">
+    <h1 class="slide-title">Phase 2 — TPO Long-Term Ownership</h1>
+    <div class="slide-subtitle">Trillium Property Ownership · 20-year hold · 50/50 cash flow split · 30/70 capital gain split</div>
+
+    <div class="grid-2">
+      <div>
+        <h3>Stabilized Operations (Year 1)</h3>
+        <table class="t">
+          <tr><td>Gross Rental Income</td><td class="num">$825,000</td></tr>
+          <tr><td>Vacancy (5%)</td><td class="num">−$41,250</td></tr>
+          <tr><td>Effective Gross Income</td><td class="num">$783,750</td></tr>
+          <tr><td>Operating Expenses (~23% EGI)</td><td class="num">−$182,350</td></tr>
+          <tr class="subtotal"><td>Stabilized NOI</td><td class="num">$601,400</td></tr>
+          <tr><td>CMHC Mortgage Payment</td><td class="num">−$501,167</td></tr>
+          <tr class="total"><td>Net Cash Flow (Year 1)</td><td class="num">$100,233</td></tr>
+        </table>
+
+        <h3>Phase 2 LP Terms</h3>
+        <table class="t">
+          <tr><td>Phase 2 LP capital raise</td><td class="num">$2,000,000</td></tr>
+          <tr><td>Cash-on-cash target</td><td class="num">5% annual</td></tr>
+          <tr><td>Cash flow split (LP/GP)</td><td class="num">50% / 50%</td></tr>
+          <tr><td>Capital gain split at exit</td><td class="num">30% / 70%</td></tr>
+          <tr><td>Phase 2 LP Year 1 distribution</td><td class="num">$50,117</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <h3>20-Year Hold Projection</h3>
+        <table class="t">
+          <tr><td>Year 20 NOI (2.5% growth)</td><td class="num">$960,800</td></tr>
+          <tr><td>Year 20 Asset Value (4% cap)</td><td class="num">$24,020,000</td></tr>
+          <tr><td>Year 20 Mortgage Balance (~70% remaining)</td><td class="num">−$7,076,000</td></tr>
+          <tr><td>Year 20 Equity Value</td><td class="num">$16,944,000</td></tr>
+          <tr><td>Cumulative distributions (20 yrs)</td><td class="num">$3,000,000</td></tr>
+          <tr class="subtotal"><td>Total Asset Value to Stack</td><td class="num">$19,944,000</td></tr>
+        </table>
+
+        <h3>Distribution by Party (20-Year)</h3>
+        <table class="t">
+          <tr><td><strong>Phase 1 LP</strong> (refi proceeds + holdback)</td><td class="num">~$2,500,000</td></tr>
+          <tr><td><strong>Phase 2 LP</strong> (50% cash flow + 30% gain)</td><td class="num">~$5,800,000</td></tr>
+          <tr><td><strong>GP (Trillium)</strong> (50% cash flow + 70% gain + AM fee)</td><td class="num">~$11,644,000</td></tr>
+        </table>
+
+        <div class="callout">
+          <strong>Trillium 20-year economics:</strong> ~$11.6M of GP return on $1M Phase 1 GP capital. Equity multiple ~11.6× on GP capital; ~7.5% blended CAGR. Asset Mgmt fee adds ~$360K/yr × 20 = $7.2M of fee income through the hold.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Confidential — For Internal Use Only</span>
+    <span>Trillium United Estate · June 2026</span>
+  </div>
+</div>
+
+<!-- ============= SLIDE 8 — RISKS &amp; MITIGANTS ============= -->
+<div class="slide">
+  <div class="brand-bar">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text"><div class="name">TRILLIUM</div><div class="tag">UNITED ESTATE</div></div>
+    </div>
+    <div class="doc-meta">
+      <div><strong>2008 Brimley Road</strong> · Internal Deal Memo</div>
+      <div>June 2026 · Page 8 of 10</div>
+    </div>
+  </div>
+  <div class="section-marker">RISKS &amp; MITIGANTS</div>
+
+  <div class="slide-content">
+    <h1 class="slide-title">Risk Analysis</h1>
+    <div class="slide-subtitle">Five key risks with explicit mitigants</div>
+
+    <div class="risk-row">
+      <div class="risk-side">
+        <div class="risk-label">RISK 1 — REFI / DSCR SHORTFALL</div>
+        <div class="risk-text">Standard CMHC MLI Select at 4.5% / 1.20× DSCR sizes loan at ~$10.1M; construction loan payoff + VTB exceeds this by ~$0.9M, creating a Phase 1 exit gap.</div>
+      </div>
+      <div class="miti-side">
+        <div class="miti-label">MITIGANT</div>
+        <div class="miti-text">Pursue MLI Select Tier 3 (Premium) → 4.0% rate, 1.15× DSCR lifts loan to ~$11.8M. Stretch goal: BCH 40% forgivable (adds $5.6M of forgivable capital). Confirm at pre-application.</div>
+      </div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-side">
+        <div class="risk-label">RISK 2 — CONSTRUCTION COST OVERRUN</div>
+        <div class="risk-text">$300/sf is the modeled hard cost; market range $260-$320/sf. Trade pricing has been escalating 4-6% annually; 18-month construction window exposes to mid-cycle cost inflation.</div>
+      </div>
+      <div class="miti-side">
+        <div class="miti-label">MITIGANT</div>
+        <div class="miti-text">5% contingency built in ($424K); ICI general contractor with fixed-price + price escalation clauses; $500K construction buffer at TPC level for excess overruns.</div>
+      </div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-side">
+        <div class="risk-label">RISK 3 — VTB COUNTERPARTY (SELLER)</div>
+        <div class="risk-text">Seller Gary Loughlin holds $1M VTB at 2nd charge on land for 24 months. Seller's parallel Muskoka purchase depends on Phase 1 cash arriving same day; counterparty/timing risk.</div>
+      </div>
+      <div class="miti-side">
+        <div class="miti-label">MITIGANT</div>
+        <div class="miti-text">Coordinated same-day closing; seller's reverse mortgage on Muskoka is his independent arrangement; VTB is 2nd charge subordinate to construction lender; inter-creditor agreement defines payoff sequencing.</div>
+      </div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-side">
+        <div class="risk-label">RISK 4 — ZONING / PERMIT RISK</div>
+        <div class="risk-text">RD zoning; project is 6-storey with 28,261 sf GFA. PAC submitted but not yet approved; City of Toronto may push back on density, height, or parking relief.</div>
+      </div>
+      <div class="miti-side">
+        <div class="miti-label">MITIGANT</div>
+        <div class="miti-text">Office Ou has completed PAC drawings to permit-ready stage; 6-storey rental is generally supportable in this corridor; pre-application consultations indicated positive city reception; backup options if scope reduces.</div>
+      </div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-side">
+        <div class="risk-label">RISK 5 — RENTAL MARKET SOFTENING</div>
+        <div class="risk-text">Scarborough rents up 4% YoY through 2025 but slowdown signals visible. Modeled rents are mid-market; market correction could reduce stabilized NOI by 10-15%.</div>
+      </div>
+      <div class="miti-side">
+        <div class="miti-label">MITIGANT</div>
+        <div class="miti-text">Conservative rent assumptions used (not above-market); DSCR 1.20× provides cushion; 50-year amortization reduces payment pressure; mixed unit type spreads risk across rental segments.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Confidential — For Internal Use Only</span>
+    <span>Trillium United Estate · June 2026</span>
+  </div>
+</div>
+
+<!-- ============= SLIDE 9 — LONG-TERM OUTLOOK ============= -->
+<div class="slide">
+  <div class="brand-bar">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text"><div class="name">TRILLIUM</div><div class="tag">UNITED ESTATE</div></div>
+    </div>
+    <div class="doc-meta">
+      <div><strong>2008 Brimley Road</strong> · Internal Deal Memo</div>
+      <div>June 2026 · Page 9 of 10</div>
+    </div>
+  </div>
+  <div class="section-marker">LONG-TERM OUTLOOK</div>
+
+  <div class="slide-content">
+    <h1 class="slide-title">Long-Term Outlook &amp; Strategic Fit</h1>
+    <div class="slide-subtitle">3-5 year vision · Portfolio strategy · Exit optionality</div>
+
+    <div class="grid-2">
+      <div>
+        <h3>3-Year View (2026 – 2029)</h3>
+        <ul>
+          <li><strong>Acquisition + construction</strong> through Q1 2029</li>
+          <li><strong>CMHC refinance</strong> at substantial completion + 90% lease-up (Q2-Q3 2029)</li>
+          <li><strong>Phase 1 LP exit</strong> via refi (BCH or Tier 3 strongly preferred)</li>
+          <li><strong>Phase 2 capital raise</strong> at refi event to take out Phase 1 LP holdback if needed</li>
+          <li><strong>Stabilization</strong> + rent burn-off through 2030</li>
+        </ul>
+
+        <h3>5-Year View (2026 – 2031)</h3>
+        <ul>
+          <li>Asset stabilized; cash flow distributing 50/50 LP/GP</li>
+          <li>Rental growth 3-5% annually drives NOI from ~$601K → ~$735K</li>
+          <li>Refi opportunity (rate reset on CMHC) creates recap option at Year 5</li>
+          <li>Asset value at 4.5% cap: ~$16.3M; potential equity recap of $2-3M</li>
+        </ul>
+
+        <h3>Portfolio Fit</h3>
+        <ul>
+          <li>Adds 29 stabilized units to Trillium Property Ownership portfolio</li>
+          <li>Scarborough East geographic fit; complements existing assets</li>
+          <li>Mid-market rent profile aligns with Trillium's positioning</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>20-Year Vision</h3>
+        <table class="t">
+          <thead><tr><th>Year</th><th class="num">NOI</th><th class="num">Asset Value (4% cap)</th></tr></thead>
+          <tbody>
+            <tr><td>2029 (Yr 1)</td><td class="num">$601K</td><td class="num">$15.0M</td></tr>
+            <tr><td>2034 (Yr 5)</td><td class="num">$680K</td><td class="num">$17.0M</td></tr>
+            <tr><td>2039 (Yr 10)</td><td class="num">$770K</td><td class="num">$19.2M</td></tr>
+            <tr><td>2044 (Yr 15)</td><td class="num">$870K</td><td class="num">$21.7M</td></tr>
+            <tr class="subtotal"><td>2049 (Yr 20)</td><td class="num">$961K</td><td class="num">$24.0M</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Exit Optionality</h3>
+        <ul style="font-size: 10pt;">
+          <li><strong>Yr 5:</strong> Recapitalize at lower CMHC rate; pull out $2-3M of equity</li>
+          <li><strong>Yr 10:</strong> Disposition at 4.0% cap (~$19M) or refi-and-hold</li>
+          <li><strong>Yr 15:</strong> Portfolio recap / institutional sale window</li>
+          <li><strong>Yr 20:</strong> Disposition at exit cap, blended CAGR ~7.5% on GP capital</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Strategic position:</strong> A long-term hold in Trillium Property Ownership delivers ~$11.6M of GP value over 20 years on $1M of GP capital. The Asset Management fee alone (~$360K/yr × 20 = $7.2M) represents predictable recurring income — important for Trillium's operating cash flow profile.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Confidential — For Internal Use Only</span>
+    <span>Trillium United Estate · June 2026</span>
+  </div>
+</div>
+
+<!-- ============= SLIDE 10 — TIMELINE &amp; NEXT STEPS ============= -->
+<div class="slide">
+  <div class="brand-bar">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text"><div class="name">TRILLIUM</div><div class="tag">UNITED ESTATE</div></div>
+    </div>
+    <div class="doc-meta">
+      <div><strong>2008 Brimley Road</strong> · Internal Deal Memo</div>
+      <div>June 2026 · Page 10 of 10</div>
+    </div>
+  </div>
+  <div class="section-marker">TIMELINE &amp; NEXT STEPS</div>
+
+  <div class="slide-content">
+    <h1 class="slide-title">Timeline &amp; Task Division</h1>
+    <div class="slide-subtitle">Key milestones &amp; ownership by function</div>
+
+    <div class="grid-2">
+      <div>
+        <h3>Timeline — Milestones</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Jun–Jul 2026</div>
+            <div class="timeline-event">
+              <div class="what">LOI &amp; legal documentation</div>
+              <div class="detail">PSA, VTB instrument, occupancy license, inter-creditor</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Aug 2026</div>
+            <div class="timeline-event">
+              <div class="what">Land closing + seller occupancy</div>
+              <div class="detail">$1M cash + $1M VTB; coordinated with Muskoka close</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Aug 2026 – Jul 2027</div>
+            <div class="timeline-event">
+              <div class="what">Seller transition + permits</div>
+              <div class="detail">12-mo occupancy; PAC outcome; permit drawings; building permit</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Jul 2027</div>
+            <div class="timeline-event">
+              <div class="what">Construction loan close + demo + mobilization</div>
+              <div class="detail">Seller vacates; existing dwelling demolished; site mobilization</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Aug 2027 – Jan 2029</div>
+            <div class="timeline-event">
+              <div class="what">Construction (18 months)</div>
+              <div class="detail">5 draws (20/20/20/20/5) + 10% holdback</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Q1 2029</div>
+            <div class="timeline-event">
+              <div class="what">Substantial completion + lease-up</div>
+              <div class="detail">Certificate issued; rents to 90%+ occupancy</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Q2–Q3 2029</div>
+            <div class="timeline-event">
+              <div class="what">CMHC permanent refinance · Phase 1 LP exit</div>
+              <div class="detail">CMHC/BCH proceeds discharge construction loan + VTB; Phase 2 capital raise if needed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3>Task Division</h3>
+        <table class="t">
+          <thead><tr><th>Function</th><th>Key Tasks</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Finance</strong></td>
+              <td>Construction loan commitment · VTB docs · CMHC/BCH pre-application · Interest reserve management · Phase 1 LP capital calls</td>
+            </tr>
+            <tr>
+              <td><strong>Development</strong></td>
+              <td>Building permit applications · GC selection · Construction oversight · Cost/budget tracking · QC inspections</td>
+            </tr>
+            <tr>
+              <td><strong>Real Estate</strong></td>
+              <td>Due diligence · Appraisals (as-is, as-complete) · Lease-up strategy · Property management setup · Market rent analysis</td>
+            </tr>
+            <tr>
+              <td><strong>Structure</strong></td>
+              <td>LP/GP entity setup · Subscription docs · Investor onboarding · Waterfall calcs · Distribution scheduling</td>
+            </tr>
+            <tr>
+              <td><strong>Deal Mgmt</strong></td>
+              <td>Stakeholder communication · Timeline tracking · Risk monitoring · Monthly reporting · Issue escalation</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Immediate Next Steps (Next 30 Days)</h3>
+        <ul style="font-size: 10pt;">
+          <li><strong>LOI to seller</strong> via Gary's counsel — present three-option structure (A garage, B all-cash, C cash+equity)</li>
+          <li><strong>CMHC + BCH pre-application call</strong> to validate Tier 3 / BCH eligibility and rate</li>
+          <li><strong>Engage Trillium's deal counsel</strong> for PSA + VTB + inter-creditor drafting</li>
+          <li><strong>Phase 1 LP commitments</strong> — confirm capital availability for Aug 2026 land close</li>
+          <li><strong>Office Ou alignment</strong> on permit drawings + cost engineering options</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Decision required:</strong> Path to Phase 1 LP exit — pursue BCH (best capital efficiency), Tier 3 (moderate), or accept Phase 1 capital extension into Phase 2.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Confidential — For Internal Use Only</span>
+    <span>Trillium United Estate · June 2026 · End of Deck</span>
+  </div>
+</div>
+
+</body>
+</html>

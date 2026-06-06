@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2008 Brimley Road — Trillium Proforma</title>
+<style>
+  :root {
+    --trillium-green: #1B4D3E;
+    --light-green: #2D6A4F;
+    --accent: #2E5D9F;
+    --green: #2D6A4F;
+    --amber: #B7791F;
+    --plum: #6B3F73;
+    --grey: #555;
+    --grey-light: #E8E8E8;
+    --bg: #F5F5F0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Arial, -apple-system, "Segoe UI", sans-serif;
+    color: #0F3028;
+    background: var(--bg);
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 14px 22px;
+    background: white;
+    border: 1px solid #DDD;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  header.banner {
+    border-bottom: 3px solid var(--trillium-green);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  header.banner h1 {
+    font-size: 19px;
+    color: var(--trillium-green);
+    margin: 0;
+    letter-spacing: -0.3px;
+    font-weight: 700;
+  }
+  header.banner .sub {
+    color: var(--grey);
+    font-size: 11px;
+    margin-top: 2px;
+  }
+  header.banner .meta-right {
+    text-align: right;
+    color: var(--grey);
+    font-size: 10px;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+  header.banner .badge {
+    display: inline-block;
+    background: var(--trillium-green);
+    color: white;
+    font-weight: 600;
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* TOP METRICS STRIP */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .metric {
+    background: var(--bg);
+    border-left: 3px solid var(--trillium-green);
+    padding: 5px 8px;
+    border-radius: 2px;
+  }
+  .metric.amber { border-left-color: var(--amber); }
+  .metric.green { border-left-color: var(--green); }
+  .metric.blue { border-left-color: var(--accent); }
+  .metric .l { font-size: 8px; color: var(--grey); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+  .metric .v { font-size: 13px; font-weight: 700; color: var(--trillium-green); margin-top: 1px; }
+  .metric .n { font-size: 8.5px; color: #888; margin-top: 1px; }
+
+  h2 {
+    font-size: 11px;
+    color: white;
+    background: var(--trillium-green);
+    padding: 4px 8px;
+    margin: 0 0 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  table.mini {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5px;
+  }
+  table.mini td {
+    padding: 2px 6px;
+    border-bottom: 1px solid #EEE;
+    vertical-align: top;
+  }
+  table.mini td.lbl { font-weight: 600; }
+  table.mini td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.mini tr.total td {
+    border-top: 1.5px solid var(--trillium-green);
+    border-bottom: none;
+    font-weight: 700;
+    color: var(--trillium-green);
+    padding-top: 4px;
+  }
+  table.mini tr.split td {
+    color: var(--grey);
+    font-style: italic;
+  }
+  table.mini tr.split td.lbl { padding-left: 14px; }
+
+  /* Unit mix table */
+  table.units {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5px;
+    margin-top: 4px;
+  }
+  table.units th { background: var(--light-green); color: white; padding: 3px 6px; text-align: left; font-size: 9.5px; }
+  table.units td { padding: 3px 6px; border-bottom: 1px solid #EEE; }
+  table.units td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.units tr.total td {
+    border-top: 1.5px solid var(--trillium-green);
+    font-weight: 700;
+    color: var(--trillium-green);
+  }
+
+  .panel {
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    padding: 7px 10px;
+    background: white;
+  }
+  .panel.warn { border-left: 3px solid var(--amber); background: #FFF8EB; }
+  .panel.info { border-left: 3px solid var(--accent); background: #F0F4F9; }
+
+  .findings {
+    margin: 8px 0;
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+  .findings ul {
+    margin: 4px 0;
+    padding-left: 16px;
+  }
+  .findings li { margin-bottom: 3px; }
+
+  footer {
+    margin-top: 10px;
+    padding-top: 6px;
+    border-top: 1px solid #DDD;
+    font-size: 9px;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; border: none; padding: 12px 18px; max-width: 100%; }
+    @page { size: letter; margin: 0.4in; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="banner">
+  <div>
+    <h1>2008 BRIMLEY ROAD — TRILLIUM PROFORMA</h1>
+    <div class="sub">Scarborough, ON · 6-Storey + Garden Suite · 29-Unit Purpose-Built Rental · Architect: Office Ou Ltd. · PAC May 2026</div>
+  </div>
+  <div class="meta-right">
+    <div><strong>Owner / Operator:</strong> Trillium United Estate</div>
+    <div>Proforma rev: Jun 2026</div>
+    <div><span class="badge">CMHC MLI Select · Standard Tier</span></div>
+  </div>
+</header>
+
+<!-- METRICS STRIP -->
+<div class="metrics">
+  <div class="metric"><div class="l">Project Cost</div><div class="v">~$14.1M</div><div class="n">$300/sf hard</div></div>
+  <div class="metric blue"><div class="l">CMHC Permanent</div><div class="v">~$10.1M</div><div class="n">DSCR 1.20× / 4.5%</div></div>
+  <div class="metric amber"><div class="l">Trillium Equity</div><div class="v">~$4.5M</div><div class="n">Standard CMHC scenario</div></div>
+  <div class="metric"><div class="l">Stabilized NOI</div><div class="v">~$601K</div><div class="n">Market rents Yr 1</div></div>
+  <div class="metric green"><div class="l">Yr 20 Asset Value</div><div class="v">~$24.0M</div><div class="n">@ 4% exit cap</div></div>
+  <div class="metric green"><div class="l">20-Yr Equity Multiple</div><div class="v">~3.5–4.5×</div><div class="n">Long-term hold</div></div>
+</div>
+
+<!-- PROJECT DETAILS + UNIT MIX -->
+<div class="grid-2">
+  <div>
+    <h2>Project Per Drawings</h2>
+    <table class="mini">
+      <tr><td class="lbl">Address</td><td>2008 Brimley Rd, Scarborough M1S 2B2</td></tr>
+      <tr><td class="lbl">Lot</td><td>23.21 m × 46.94 m (~1,090 m²)</td></tr>
+      <tr><td class="lbl">Zoning</td><td>RD</td></tr>
+      <tr><td class="lbl">Main Building</td><td>6-storey, 27 units, 27,452 sf GFA</td></tr>
+      <tr><td class="lbl">Garden Suite</td><td>1-storey, 2 units, 810 sf GFA</td></tr>
+      <tr><td class="lbl">Total Units</td><td><strong>29</strong></td></tr>
+      <tr><td class="lbl">Total GFA</td><td><strong>28,261 sf</strong> (2,625.5 m²)</td></tr>
+      <tr><td class="lbl">Architect</td><td>Office Ou Ltd. (PAC sheet 2026-06)</td></tr>
+      <tr><td class="lbl">Land Acquisition</td><td>$2.0M ($1M cash + $1M VTB)</td></tr>
+    </table>
+  </div>
+
+  <div>
+    <h2>Unit Mix &amp; Rent Roll (Market)</h2>
+    <table class="units">
+      <thead>
+        <tr><th>Type</th><th class="num">Count</th><th class="num">Sf</th><th class="num">$/mo</th><th class="num">Annual</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Studio</td><td class="num">2</td><td class="num">404</td><td class="num">$1,650</td><td class="num">$39,600</td></tr>
+        <tr><td>1 BR</td><td class="num">7</td><td class="num">701</td><td class="num">$1,950</td><td class="num">$163,800</td></tr>
+        <tr><td>1 BR + Den</td><td class="num">8</td><td class="num">720</td><td class="num">$2,200</td><td class="num">$211,200</td></tr>
+        <tr><td>2 BR</td><td class="num">6</td><td class="num">726</td><td class="num">$2,500</td><td class="num">$180,000</td></tr>
+        <tr><td>3 BR + Den</td><td class="num">6</td><td class="num">1,075</td><td class="num">$3,200</td><td class="num">$230,400</td></tr>
+        <tr class="total"><td>TOTAL</td><td class="num">29</td><td class="num">28,261</td><td class="num">—</td><td class="num">$825,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- INCOME + DEV COSTS -->
+<div class="grid-2">
+  <div>
+    <h2>Year 1 Income &amp; NOI (Market Rents)</h2>
+    <table class="mini">
+      <tr><td class="lbl">Gross Rental Income</td><td class="num">$825,000</td></tr>
+      <tr><td class="lbl" style="padding-left:8px;">Vacancy (5%)</td><td class="num">−$41,250</td></tr>
+      <tr><td class="lbl">Effective Gross Income</td><td class="num">$783,750</td></tr>
+      <tr class="split"><td class="lbl">Property tax</td><td class="num">−$50,000</td></tr>
+      <tr class="split"><td class="lbl">Insurance</td><td class="num">−$22,000</td></tr>
+      <tr class="split"><td class="lbl">R&amp;M</td><td class="num">−$32,000</td></tr>
+      <tr class="split"><td class="lbl">Common utilities</td><td class="num">−$22,000</td></tr>
+      <tr class="split"><td class="lbl">Prop mgmt (4% EGI)</td><td class="num">−$31,350</td></tr>
+      <tr class="split"><td class="lbl">Other / reserves</td><td class="num">−$25,000</td></tr>
+      <tr><td class="lbl">Total Operating Expenses</td><td class="num">−$182,350</td></tr>
+      <tr class="total"><td>Stabilized NOI</td><td class="num">$601,400</td></tr>
+      <tr><td class="lbl">NOI per unit</td><td class="num">$20,738</td></tr>
+      <tr><td class="lbl">NOI per sf</td><td class="num">$21.28</td></tr>
+    </table>
+  </div>
+
+  <div>
+    <h2>Development Cost — Total Project Cost</h2>
+    <table class="mini">
+      <tr><td class="lbl">Land purchase + closing</td><td class="num">$2,162,000</td></tr>
+      <tr><td class="lbl">Hard cost (28,261 sf × $300/sf)</td><td class="num">$8,478,300</td></tr>
+      <tr><td class="lbl">Soft costs (18% of hard)</td><td class="num">$1,526,094</td></tr>
+      <tr><td class="lbl">Construction loan interest (18 mo)</td><td class="num">$562,000</td></tr>
+      <tr><td class="lbl">Construction loan fee</td><td class="num">$200,000</td></tr>
+      <tr><td class="lbl">VTB interest (24 mo @ 7.5%)</td><td class="num">$150,000</td></tr>
+      <tr><td class="lbl">Contingency (10% of hard + soft)</td><td class="num">$1,000,440</td></tr>
+      <tr class="total"><td>TOTAL PROJECT COST</td><td class="num">~$14,078,800</td></tr>
+      <tr><td class="lbl">Per unit</td><td class="num">$485,500</td></tr>
+      <tr><td class="lbl">Per sf</td><td class="num">$498</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- FINANCING + KEY METRICS -->
+<div class="grid-2">
+  <div>
+    <h2>CMHC MLI Select — Permanent Financing</h2>
+    <table class="mini">
+      <tr><td class="lbl">Stabilized NOI</td><td class="num">$601,400</td></tr>
+      <tr><td class="lbl">DSCR target (Standard)</td><td class="num">1.20×</td></tr>
+      <tr><td class="lbl">Max annual debt service</td><td class="num">$501,167</td></tr>
+      <tr><td class="lbl">Rate / Amort (Standard tier)</td><td class="num">4.5% / 50 yr</td></tr>
+      <tr><td class="lbl">Annual factor</td><td class="num">0.04958</td></tr>
+      <tr><td class="lbl">DSCR-driven max loan</td><td class="num">~$10,108,000</td></tr>
+      <tr><td class="lbl">LTV-driven max (95% × $15.0M val)</td><td class="num">~$14,300,000</td></tr>
+      <tr class="total"><td>CMHC Permanent Loan (lower of)</td><td class="num">~$10,108,000</td></tr>
+      <tr><td class="lbl">Year 1 cash flow after DS</td><td class="num">~$100,000</td></tr>
+      <tr><td class="lbl">DSCR (actual)</td><td class="num">1.20×</td></tr>
+    </table>
+  </div>
+
+  <div>
+    <h2>Refi Cash Flow Analysis</h2>
+    <table class="mini">
+      <tr><td class="lbl">CMHC permanent proceeds</td><td class="num">$10,108,000</td></tr>
+      <tr><td class="lbl">Less: Construction loan payoff</td><td class="num">−$11,930,000</td></tr>
+      <tr><td class="lbl">Less: Residual VTB to seller</td><td class="num">−$500,000</td></tr>
+      <tr class="total"><td>Cash Gap (Trillium top-up)</td><td class="num" style="color:#B7791F;">~−$2,322,000</td></tr>
+      <tr><td class="lbl">Plus equity at construction</td><td class="num">~$2,111,000</td></tr>
+      <tr class="total"><td>Total Trillium Equity in Deal</td><td class="num" style="color:#B7791F;">~$4,433,000</td></tr>
+      <tr><td class="lbl">Year 1 cash-on-cash</td><td class="num">~2.3%</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- KEY FINDINGS / FLAGS -->
+<div class="panel warn">
+  <h2 style="background: #B7791F;">⚠ KEY FINDING — STANDARD CMHC DOES NOT FULLY PENCIL</h2>
+  <div class="findings">
+    The proforma at <strong>market rents + Standard MLI Select 4.5%</strong> generates a stabilized NOI of $601K, which sizes CMHC at ~$10.1M. The construction loan payoff (~$11.9M) plus residual VTB ($500K) exceeds the CMHC proceeds by ~$2.3M — meaning Trillium needs to fund an additional ~$2.3M of equity at refi on top of the ~$2.1M already deployed during construction. <strong>Total Trillium equity exposure: ~$4.4M.</strong> Year 1 cash-on-cash is modest at ~2.3% but long-term returns benefit from rent growth, mortgage paydown, and asset appreciation.
+    <p><strong>Three paths to improve the economics:</strong></p>
+    <ul>
+      <li><strong>BCH 40% Forgivable Loan</strong> — adds ~$5.6M of forgivable capital; transforms refi economics. Requires affordability covenant (≥30% of units at 80% MMR) but project structure supports it. <em>This is the path modeled in the Investor Package.</em></li>
+      <li><strong>Pursue MLI Select Tier 3 (premium)</strong> — 4.0% rate, deeper amortization, 1.15× DSCR. Requires affordability + energy + accessibility commitments. Could lift CMHC loan to ~$11.5M-12.0M and largely close the gap.</li>
+      <li><strong>Reduce hard cost to $275-285/sf</strong> through value engineering — reduces TPC by ~$420K-700K and lowers Trillium's required equity.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 20-YR HOLD + SENSITIVITY -->
+<div class="grid-2" style="margin-top: 10px;">
+  <div>
+    <h2>20-Year Hold Returns (Approximate)</h2>
+    <table class="mini">
+      <tr><td class="lbl">Year 1 NOI</td><td class="num">$601,400</td></tr>
+      <tr><td class="lbl">Year 20 NOI (2.5% growth)</td><td class="num">$960,800</td></tr>
+      <tr><td class="lbl">Year 20 Asset Value (4% cap)</td><td class="num">$24,020,000</td></tr>
+      <tr><td class="lbl">Year 20 Mortgage Balance (est.)</td><td class="num">−$7,076,000</td></tr>
+      <tr><td class="lbl">Year 20 Equity Value</td><td class="num">$16,944,000</td></tr>
+      <tr><td class="lbl">Cumulative cash flow (Yrs 1–20, ~50% growth)</td><td class="num">$3,000,000</td></tr>
+      <tr class="total"><td>Total Trillium Return (20-Yr)</td><td class="num">~$19,944,000</td></tr>
+      <tr><td class="lbl">Equity Multiple on $4.4M</td><td class="num">~4.5×</td></tr>
+      <tr><td class="lbl">Approximate Annualized CAGR</td><td class="num">~7.5%</td></tr>
+    </table>
+  </div>
+
+  <div>
+    <h2>Cap Rate Sensitivity (Yr 20)</h2>
+    <table class="mini">
+      <tr><td class="lbl">Yr 20 NOI (base)</td><td class="num">$960,800</td></tr>
+      <tr><td class="lbl">3.0% exit cap</td><td class="num">$32,027,000</td></tr>
+      <tr><td class="lbl">3.5% exit cap</td><td class="num">$27,451,000</td></tr>
+      <tr class="total"><td>4.0% exit cap (base)</td><td class="num">$24,020,000</td></tr>
+      <tr><td class="lbl">4.5% exit cap</td><td class="num">$21,351,000</td></tr>
+      <tr><td class="lbl">5.0% exit cap</td><td class="num">$19,216,000</td></tr>
+    </table>
+    <p style="font-size: 9px; color: var(--grey); margin-top: 6px; font-style: italic;">
+      Toronto multifamily reference 3.5–4.5%. Cap compression in mid-cycle (3.5%) could lift Yr 20 equity value materially.
+    </p>
+  </div>
+</div>
+
+<!-- RECOMMENDATION -->
+<div class="panel info" style="margin-top: 10px;">
+  <h2 style="background: #2E5D9F;">RECOMMENDATION</h2>
+  <div class="findings">
+    Trillium proforma at market rents + standard CMHC produces a positive long-term hold (~4.5× equity multiple, ~7.5% CAGR) but requires ~$4.4M of Trillium equity exposure with modest Year-1 cash flow. The deal is investable as a long-term stabilized hold but the equity ask is meaningful.
+    <p><strong>The strategic case for pursuing the BCH Ubuntu structure</strong> (see Investor Package): replaces Trillium's $4.4M equity with a Howard-led structure at $0 cash from Trillium, plus social-impact partnership with Our Greenway NFP. Trillium's economics shift from "long-term hold owner with $4.4M tied up" to "structuring sponsor with development fee + ongoing share" — better aligns with Trillium's capital efficiency profile.</p>
+    <p><strong>Trillium next steps:</strong> (1) Confirm BCH program eligibility and rate sheet with CMHC pre-application; (2) finalize affordability mix to support BCH Tier 3 / 30%-affordable covenant; (3) align with Office Ou on cost engineering opportunities ($300/sf → $280/sf would reduce equity ask by ~$420K).</p>
+  </div>
+</div>
+
+<footer>
+  <span>Trillium United Estate · 2008 Brimley Road · Proforma rev Jun 2026 · CMHC MLI Select Standard base case</span>
+  <span>Companion: <em>2008_Brimley_Proforma_Trillium.xlsx</em></span>
+</footer>
+
+</div>
+</body>
+</html>
